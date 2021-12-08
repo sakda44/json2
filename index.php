@@ -38,7 +38,7 @@
         <table>
             <thead>
                 <tr>
-                    <th>ID</th> <th>Title</th><th>Author</th>
+                    <th>ID</th> <th>Comment</th><th>Author</th>
                 </tr>
             </thead>
             <tbody id="tblcomment">
@@ -111,13 +111,15 @@
         }
         $(()=>{
             loadPosts();
-            $("#btnBack").click(() => {
-                $("#detail_title").remove();
-                $("#detail").hide();
-                $("#main").show();
             $("#detail").hide();
             $("#comment").hide();
-            
+            showDetails();
+            $("#btnBack").click(() => {
+                $("#detail_title").remove();
+                $("#detail").show();
+                $("#main").hide();
+            showcomment();
+            $("#comment").show();
             });
         })
     </script>

@@ -75,7 +75,9 @@
             $.getJSON(url)
                 .done((data)=>{
                     console.log(data);                    
-                    var line = "<tr id='detail_title'";
+                    var 
+                        line = "<tr id='detail_title'";
+                        line += "<td> <button onClick='showcomment("+ item.id +");' > comment </button> </td>";
                         line += "><td>" + data.id + "</td>"
                         line += "<td><b>" + data.title + "</b><br/>"
                         line += data.body + "</td>"

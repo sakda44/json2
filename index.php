@@ -33,7 +33,7 @@
             </tbody>
         </table>
     </div>
-    </hr>
+    <hr>
     <div id="comment">
         <table>
             <thead>
@@ -51,15 +51,16 @@
         function showcomment(id){
             $("#main").hide();
             $("#comment").show();
-            var url = "https://jsonplaceholder.typicode.com/posts/comments"+id
+            var url = "https://jsonplaceholder.typicode.com/posts/1/comments"
             $.getJSON(url)
                 .done((data)=>{
                     console.log(data);                    
                     var line = "<tr id='detail_comment'";
                         line += "><td>" + data.id + "</td>"
-                        line += "<td><b>" + data.title + "</b><br/>"
+                        line += "<td><b>" + data.name + "</b><br/>"
+                        line += "<td><b>" + data.email + "</b><br/>"
                         line += data.body + "</td>"
-                        line += "<td>" + data.userId + "</td>"
+                        line += "<td>" + data.postId + "</td>"
                         line += "</tr>";
                         $("#tblcomment").append(line);
                 })

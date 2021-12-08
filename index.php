@@ -115,8 +115,9 @@
                 $("#detail_title").remove();
                 $("#detail").hide();
                 $("#main").show();
+                $("#comment").hide();
             $("#detail").hide();
-            $("#comment").hide();
+            
             
             });
         })

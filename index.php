@@ -51,7 +51,7 @@
         function showcomment(id){
             $("#main").hide();
             $("#comment").show();
-            var url = "https://jsonplaceholder.typicode.com/posts/1/comments"
+            var url = "https://jsonplaceholder.typicode.com/posts/comments"+id
             $.getJSON(url)
                 .done((data)=>{
                     console.log(data);                    
@@ -111,15 +111,13 @@
         }
         $(()=>{
             loadPosts();
-            $("#detail").hide();
-            $("#comment").hide();
-            showDetails();
             $("#btnBack").click(() => {
                 $("#detail_title").remove();
-                $("#detail").show();
-                $("#main").hide();
-            showcomment();
-            $("#comment").show();
+                $("#detail").hide();
+                $("#main").show();
+            $("#detail").hide();
+            $("#comment").hide();
+            
             });
         })
     </script>

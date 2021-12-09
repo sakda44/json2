@@ -45,9 +45,8 @@
             </tbody>
         </table>
     </div>
-        
-    </body>
-    <script>
+</body>
+<script>
         function showcomment(id){
             $("#main").hide();
             $("#detail").show();
@@ -113,16 +112,20 @@
             loadPosts();
             $("#btnBack").click(() => {
                 $("#detail_title").remove();
+                $("#detail_comment").remove();
                 $("#detail").hide();
                 $("#main").show();
-                $("#comment").show();
+                $("#comment").hide();
             });
             $("#detail").hide();
+            $("#comment").hide();
             
-            showcomment();
+            showDetails();
+            $("#comment").show();
+
             
             
             
         })
-    </script>
-    </html>
+</script>
+</html>

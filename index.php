@@ -123,6 +123,8 @@
             showDetails();
             $("#comment").show();
 
+            showcomment();
+
             
             
             

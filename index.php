@@ -33,8 +33,9 @@
             </tbody>
         </table>
     </div>
-    <hr>
+    
     <div id="comment">
+        <hr>
         <table>
             <thead>
                 <tr>
@@ -118,7 +119,8 @@
                 $("#main").show();
             });
             $("#detail").hide();
-            
+            $("#comment").hide();
+          
             showDetails();
             $("#comment").show();
 

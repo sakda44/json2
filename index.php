@@ -50,6 +50,7 @@
     <script>
         function showcomment(id){
             $("#main").hide();
+            $("#detail").show();
             $("#comment").show();
             var url = "https://jsonplaceholder.typicode.com/posts/"+id+"/comments";
             $.getJSON(url)
@@ -115,11 +116,13 @@
                 $("#detail").hide();
                 $("#main").show();
                 $("#comment").show();
-            $("#detail").hide();
-            showDetail();
-            $("#comment").show();
-            
             });
+            $("#detail").hide();
+            
+            showcomment();
+            
+            
+            
         })
     </script>
     </html>

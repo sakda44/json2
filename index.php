@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <script src="https://code.jquery.com/jquery-3.6.0.js"
-        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Json</title>
+    <title>Sakda_63110282</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+    integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
 </head>
 <body>
     <button id="btnBack"> back </button>
@@ -15,12 +15,10 @@
         <table>
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Title</th>
-                    <th>Author</th>
+                    <th>ID</th> <th>Title</th><th> Details </th>
                 </tr>
             </thead>
-            <tbody id="tblPost">
+            <tbody id="tblPosts">
             </tbody>
         </table>
     </div>
@@ -28,156 +26,107 @@
         <table>
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Title</th>
-                    <th>UserID</th>
+                    <th>ID</th> <th>Title</th><th>Author</th>
                 </tr>
             </thead>
-            <tbody id="tbldetails">
+            <tbody id="tbldetail">
             </tbody>
         </table>
     </div>
-    <div id="main2">
+    <hr>
+    <div id="comment">
         <table>
             <thead>
-                <th>postID</th><br/>
-
-                <th>id</th>
-                <th>name</th>
-                <th>email</th>
-                <th>body</th>
-
-            </thead>
-            <tbody id="tblPost2">
-            </tbody>
-        </table>
-    </div>
-    <div id="comments">
-        <table>
-            <thead>
-                 <tr>
-                  <th>postId</th>
-  
-                  <th>id</th>
-                  <th>name</th>
-                  <th>email</th>
-                  <th>body</th>
+                <tr>
+                    <th>ID</th><th>Comment</th><th>Author</th>
                 </tr>
             </thead>
-            <tbody id="tblcomments">
+            <tbody id="tblcomment">
             </tbody>
         </table>
     </div>
 </body>
 <script>
-    function LoadPosts() {
-        $("#main").show();
-        $("#detail").hide();
-        $("main2").hide();
-        var url = "https://jsonplaceholder.typicode.com/posts"
-        $.getJSON(url)
-            .done((data) => {
-                $.each(data, (k, item) => {
-                    
-                    var line = "<tr>";
-                    line += "<td>" + item.id + "</td>"
-                    line += "<td><b>" + item.title + "</b><br/>"
-                    line += item.body + "</td>"
-                    line += "<td><button onClick='showDetails(" + item.id + ");'>Link</button></td>"
+        function showcomment(id){
+            $("#main").hide();
+            $("#detail").show();
+            $("#comment").show();
+            var url = "https://jsonplaceholder.typicode.com/posts/"+id+"/comments";
+            $.getJSON(url)
+                .done((data)=>{
+                    console.log(data);                    
+                    var line = "<tr id='detail_comment'";
+                        line += "><td>" + data.id + "</td>"
+                        line += "<td><b>" + data.name + "</b><br/>"
+                        line += "<td><b>" + data.email + "</b><br/>"
+                        line += data.body + "</td>"
+                        line += "<td>" + data.postId + "</td>"
+                        line += "</tr>";
+                        $("#tblcomment").append(line);
+                })
+                .fail((xhr, err, status) => {
+
+                })
+        }
+
+        function showDetails(id){
+            $("#main").hide();
+            $("#detail").show();
+            var url = "https://jsonplaceholder.typicode.com/posts/"+id;
+            $.getJSON(url)
+                .done((data)=>{
+                    console.log(data);                    
+                    var line = "<tr id='detail_title'";
+                        line += "><td>" + data.id + "</td>"
+                        line += "<td><b>" + data.title + "</b><br/>"
+                        line += data.body + "</td>"
+                        line += "<td>" + data.userId + "</td>"
+                        line += "</tr>";
+                        $("#tbldetail").append(line);
+                })
+                .fail((xhr, err, status) => {
+
+                })
+        }
         
-                    line += "</tr>";
-                    $("#tblPost").append(line);
-                });
-                $("#main").show();
-            })
-            .fail((xhr, err, status) => {
-            })
-    }
-    
-    
-    
-    function showDetails(id) {
-        $("#main").hide();
-        $("#detail").show();
-        $("main2").hide();
-        var url = "https://jsonplaceholder.typicode.com/posts/" + id
-        $.getJSON(url)
-            .done((data) => {
-                console.log(data);
-                var line = "<tr id='details'";
-                    line += "><td>" + data.id + "</td>"
-                    line += "<td><b>" + data.title + "</b><br/>"
-                    line += data.body + "</td>"
-                    line += "<td>" + data.userId + "</td>"
-                    line += "</tr>";
-                    $("#tbldetails").append(line);
-             
-            })
-            .fail((xhr, err, status) => {
-            })
-    }
-
-    function LoadPosts2() {
-        $("#main").hide();
-        $("#comments").hide();
-        $("main2").show();
-        var url = "https://jsonplaceholder.typicode.com/comments"
-        $.getJSON(url)
-            .done((data) => {
-              $.each(data, (k, item) => {
-                    var line = "<tr>";
-                    line += "<td>" + item.postId + "</td>"
-                    line += "<td><b>" + item.id + "</b><br/>"
-                    line += "<td><b>" + item.name+ "</b><br/>"
-                    line += "<td><b>" + item.email + "</b><br/>"
-                    line +=  item.body+ "</td>"
-                
-
-                    line += "</tr>";
-                    $("#tblPost2").append(line);
-                });
-                $("#main").show();
-            })
-            .fail((xhr, err, status) => {
-            })
-    }
-
-    function showcomments(id) {
-        $("#main").hide();
-        $("#commsnts").show();
-        var url = "https://jsonplaceholder.typicode.com/posts/"+id+"/comments"
-        $.getJSON(url)
-            .done((data) => {
-                console.log(data);
-                var line = "<tr id='comments'";
-                 
-                    line += "<td><b>" + data.id + "</b><br/>"
-                    line += "<td><b>" + data.name + "</b><br/>"
-                    line += "<td><b>" + data.email + "</b><br/>"
-                    line += "<td><b>" + data.body + "</b><br/>"
-                    /*line += data.body + "</td>"*/
-                    line += "<td>" + data.postId + "</td>"
-                    line += "</tr>";
-                    $("#tblcomments").append(line);
-             
-            })
-            .fail((xhr, err, status) => {
-            })
-
-          }
-
-    
-    $(() => {
-        LoadPosts();
-        $("#detail").hide();
-        
+        function loadPosts(){
             $("#main").show();
+            $("#detail").hide();
+            var url = "https://jsonplaceholder.typicode.com/posts";
+            $.getJSON(url)
+                .done((data)=>{
+                    $.each(data, (k, item)=>{
+                        console.log(item);
+                        var line = "<tr>";
+                            line += "<td>"+ item.id + "</td>";
+                            line += "<td><b>"+ item.title + "</b><br/>";
+                            line += item.body + "</td>";
+                            line += "<td> <button onClick='showDetails("+ item.id +");' > link </button> </td>";
+                            line += "</tr>";
+                        $("#tblPosts").append(line);
+                    });
+                    $("#main").show();
+                })
+                .fail((xhr, status, error)=>{
+                })
+        }
+        $(()=>{
+            loadPosts();
             $("#btnBack").click(() => {
-            $("#main").show();
-            $("#details").remove();
-        });
-        LoadPosts2();
-    })
-  
+                $("#detail_title").remove();
+                $("#detail").hide();
+                $("#main").show();
+            });
+            $("#detail").hide();
+            
+            showDetails();
+            $("#comment").show();
+
+            showcomment();
+
+            
+            
+            
+        })
 </script>
 </html>

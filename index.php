@@ -58,7 +58,7 @@
                     var line = "<tr id='detail_comment'";
                         line += "><td>" + data.id + "</td>"
                         line += "<td><b>" + data.name + "</b><br/>"
-                        line += "<td><b>" + data.email + "</b><br/>"
+                        line += data.email + "</td>"
                         line += data.body + "</td>"
                         line += "<td>" + data.postId + "</td>"
                         line += "</tr>";

@@ -116,7 +116,7 @@
                 $("#main").show();
                 $("#comment").show();
             $("#detail").hide();
-            loadPosts();
+            showDetail();
             $("#comment").show();
             
             });

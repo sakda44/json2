@@ -118,7 +118,6 @@
                 $("#comment").show();
             });
             $("#detail").hide();
-            $("#comment").hide();
             
             showDetails();
             $("#comment").show();

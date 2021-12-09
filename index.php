@@ -90,7 +90,6 @@
         function loadPosts(){
             $("#main").show();
             $("#detail").hide();
-            
             var url = "https://jsonplaceholder.typicode.com/posts";
             $.getJSON(url)
                 .done((data)=>{
@@ -117,7 +116,8 @@
                 $("#main").show();
                 $("#comment").show();
             $("#detail").hide();
-            
+            loadPosts();
+            $("#comment").show();
             
             });
         })

@@ -115,7 +115,7 @@
             loadPosts();
             $("#btnBack").click(() => {
                 $("#detail_title").remove();
-                $("comment").remove();
+                $("comment").hide();
                 $("#detail").hide();
                 $("#main").show();
             });

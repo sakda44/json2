@@ -115,7 +115,7 @@
                 $("#detail_comment").remove();
                 $("#detail").hide();
                 $("#main").show();
-                $("#comment").hide();
+                $("#comment").show();
             });
             $("#detail").hide();
             $("#comment").hide();

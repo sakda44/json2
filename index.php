@@ -64,7 +64,7 @@
                   <th>body</th>
                 </tr>
             </thead>
-            <tbody id="tblcommets">
+            <tbody id="tblcomments">
             </tbody>
         </table>
     </div>
